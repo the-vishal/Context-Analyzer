@@ -1,2 +1,4 @@
-# Context-Analyzer
-A chrome extension build with JavaScript and Python-Flask
+# CONTEXT ANALYZER    ![image](icon.png) 
+##### A chrome extension build with JavaScript and Python-Flask.
+
+----------------------------
