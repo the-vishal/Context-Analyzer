@@ -1,16 +1,15 @@
-{
-  "manifest_version": 2,
-
-  "name": "Context Finder",
-  "description": "Provide your Key sentences and visit any webpage to find related context on that page.",
-  "version": "1.0",
-
-  "browser_action": {
-    "default_icon": "icon.png",
-    "default_popup": "popup.html"
-  },
-  "permissions": [
-    "activeTab",
-    "https://ajax.googleapis.com/"
-  ]
-}
+  {
+    "name": "Context Finder",
+    "version": "1.0",
+    "description": "Provide your Key sentences and visit any webpage to find related context on that page.",
+	"permissions": ["activeTab","storage","tabs","<all_urls>"],
+	"background": {
+      "scripts": ["background.js"],
+      "persistent": false
+    },
+  	"browser_action": {
+    	"default_icon": "icon.png",
+    	"default_popup": "popup.html"
+  	},
+    "manifest_version": 2
+  }

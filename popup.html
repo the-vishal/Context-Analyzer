@@ -1,18 +1,22 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
-    <ul>
-      <div style="padding: 20px 20px 20px 20px;">           
+  <html>
+    <head>
+      <style>
+        button {
+          height: 40px;
+          width: 90px;
+          outline: none;
+        }
+      </style>
+    </head>
+    <body>
+      <div>           
           <h3>Hi,</h3>
           <p>Enter Your text Here : </p>         
-          <input id="input_textbox"/>
-          <a><button id="clickme" class="dropbtn">Analyze Context</button></a>
-      </div>      
-      <script type="text/javascript" src="content.js" charset="utf-8"></script>
-      <!-- <script type="text/javascript" src="popup.js" charset="utf-8"></script> -->
-    </ul>
-  </body>
+          <input id="TargetData" style="border-color: red" />
+          <button id="AnalyzeMe" style="background-color: lightblue">Analyze Context</button>
+      </div>
+      <script src="popup.js"></script>
+      <script src="jquery-2.2.js"></script>
+    </body>
 </html>
