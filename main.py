@@ -109,7 +109,7 @@ class CheckSimilarity(object):
                 get_or_train(s1words, s2words)
 
     @property
-    def relatedContext(self, method='w2v'):
+    def relatedContext(self, method='dcs'):
         sentences = self.tokenize_sentences(self.article)
         test_sentences = self.tokenize_sentences(self.testdata)
         sentences = list(map(self.text_clean, sentences))
