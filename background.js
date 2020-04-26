@@ -20,12 +20,9 @@ if(config!=undefined){
 	"test_data": JSON.stringify(TargetData)
 	}
 
-
-
 	 var xhttp = new XMLHttpRequest();
  	 xhttp.onreadystatechange = function() {
     	if (this.readyState == 4 && this.status == 200) {
-	      	// this.responseText
 	      	console.log(this.responseText);
 	      	for (var key in this.responseText) {
 				value = unicodeToChar(value).replace(/\\n/g, '');
@@ -34,17 +31,9 @@ if(config!=undefined){
     	}
   	};
   	
-  	var post_data = "article="+JSON.stringify(TrainData)+"&test_data="+JSON.stringify(TargetData);
+  	var post_data = JSON.stringify({"article":encodeURIComponent(TrainData),"test_data":encodeURIComponent(TargetData)});
   	xhttp.open(settings.method, settings.url, settings.async);
 	xhttp.setRequestHeader("Content-type", "application/json");
 	xhttp.send(post_data);
-
-
-	// $.ajax(settings).done(function (response) { 
-	// $.each(response, function( index, value ) {
-	// 	value = unicodeToChar(value).replace(/\\n/g, '');
-	// 	document.body.innerHTML = document.body.innerHTML.split(value).join('<span style="background-color: #fff799;">' + value + '</span>');
-	// 	});
-	//  })
 }
 
