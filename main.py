@@ -31,27 +31,30 @@ def home():
 def analyze_context():
     article = request.json.get('article', "")
     testData = request.json.get('testData', "")
+    algo = request.json.get('algo', 'dcs')
 
     if not (article and testData):
         return jsonify("Error: missing values")
 
     #word2vec
-    context = CheckSimilarity(article=article, testdata=testData).relatedContext
+    context = CheckSimilarity(article=article, testdata=testData, algo=algo).relatedContext
     return jsonify(context)
 
 
 
 #COSINE SIMILARITY CHECK
 class CheckSimilarity(object):
-    def __init__(self, article, testdata):
+    def __init__(self, article, testdata, algo):
         self.article = article
         self.testdata = testdata
         self.lmtzr = WordNetLemmatizer()
 
         self.stopWords = stopwords.words('english')+ list('!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~')
         self.stopWords = [' '+i+' ' for i in self.stopWords] 
-        self.wordmodelfile="H:\softwares\Software Developing\GoogleNews-vectors-negative300-SLIM.bin.gz"                                         
-        self.wordmodel= gensim.models.KeyedVectors.load_word2vec_format(self.wordmodelfile, binary=True)
+
+        if algo =='w2v':
+            self.wordmodelfile="H:\softwares\Software Developing\GoogleNews-vectors-negative300-SLIM.bin.gz"                                         
+            self.wordmodel= gensim.models.KeyedVectors.load_word2vec_format(self.wordmodelfile, binary=True)
 
     @staticmethod
     def tokenize_sentences(text):
