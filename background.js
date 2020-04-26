@@ -6,7 +6,7 @@ if(config!=undefined){
 			return String.fromCharCode(parseInt(match.replace(/\\u/g, ''), 16));
 	    });
 	}
-  let TrainData = document.innerText;
+  let TrainData = document.body.innerText;
   let TargetData = config;
   var settings = {
 	"async": true,
