@@ -42,15 +42,15 @@
           }
 
           /* Change color of dropdown links on hover */
-          .dropdown-content a:click {background-color: #f1f1f1}
+          .dropdown-content a:hover {background-color: #f1f1f1}
 
           /* Show the dropdown menu on hover */
-          .dropdown:click .dropdown-content {
+          .dropdown:hover .dropdown-content {
             display: block;
           }
 
           /* Change the background color of the dropdown button when the dropdown content is shown */
-          .dropdown:click .dropbtn {
+          .dropdown:hover .dropbtn {
             /*background-color: #3e8e41;*/
           }
         </style>
@@ -66,18 +66,26 @@
                 <button id="AnalyzeMe" type="button" class="fa fa-bar-chart btn btn-primary" style="background-color: #79aec8">
                    Analyze Context
                 </button><br />
-                <div class="dropdown">
-                  <!-- <button class="dropbtn">Dropdown</button> -->
-                  <i class="fa fa-info-circle" data-toggle="tooltip" title="Enter your text in above textarea to find relevant context on this page*" style="margin:20px; font-size:12px">
+                <i class="fa fa-info-circle" data-toggle="tooltip" title="Enter your text in above textarea to find relevant context on this page*" style="margin:20px; font-size:12px">
                      Made with &#9829; for searchers out there.
-                  </i>
+                </i>
+                <!-- <div class="dropdown">
+                  <button class="dropbtn">More</button>
                   <div class="dropdown-content">
                     <a href="#">Help</a>
                     <a href="#">Authors</a>
                     <a href="#">View Code</a>
                   </div>
-                </div>
-
+                </div> -->
+                <a href="https://github.com/the-vishal/Context-Analyzer#how-to-use-mag" class="fa fa-question-circle" data-toggle="tooltip" title="Help" style="margin:2px; font-size:13px; color: black"></a>
+                
+                <a href="#" class="fa fa-github" data-toggle="tooltip" title="View code on GitHub" style="margin:2px; font-size:13px; color: black"></a>
+                
+                <a href="https://github.com/the-vishal/Context-Analyzer/graphs/contributors" class="fa fa-code" data-toggle="tooltip" title="Authors" style="margin:2px; font-size:13px; color: black"></a>
+                <a href="https://github.com/the-vishal/Context-Analyzer/blob/master/LICENSE" class="fa fa-drivers-license-o" data-toggle="tooltip" title="LICENSE" style="margin:2px; font-size:13px; color: black"></a>
+                <a href="#" class="fa fa-coffee" data-toggle="tooltip" title="Buy me a coffee" style="margin:2px; font-size:13px; color: black"></a>
+<!--                 <a href="https://www.buymeacoffee.com/Xhunt3r" class="fa fa-coffee" data-toggle="tooltip" title="Buy me a coffee" style="margin:2px; font-size:13px"></a>
+                <a href="https://www.buymeacoffee.com/thevishal" class="fa fa-coffee" data-toggle="tooltip" title="Buy me a coffee" style="margin:2px; font-size:13px"></a> -->
           </div>
       </div>
       <script src="popup.js"></script>
