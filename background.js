@@ -158,13 +158,13 @@ if(config!=undefined){
 	 var xhttp = new XMLHttpRequest();
  	 xhttp.onreadystatechange = function() {
     	if (this.readyState == 4 && this.status == 200) {
-	      	console.log(this.responseText);
-	      	var myHilitor = new Hilitor();
-  			myHilitor.apply(this.responseText);
-	  	//for (var key in this.responseText) {
-			// 	value = unicodeToChar(value).replace(/\\n/g, '');
-			// document.body.innerHTML = document.body.innerHTML.split(value).join('<span style="background-color: #fff799;">' + value + '</span>');
-			// }
+	  		var filterData = [];
+	  	for (var key in this.responseText.resp) {
+			filterData.push(this.responseText.resp[key].sentence);
+		}
+      	var myHilitor = new Hilitor();
+		myHilitor.apply(filterData.join(' '));
+
     	}
   	};
   	
