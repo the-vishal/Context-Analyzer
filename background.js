@@ -1,5 +1,5 @@
 if(config!=undefined){
-	function Hilitor(tag)
+function Hilitor(tag)
 	{
 		  // private variables
 		  var targetNode = document.body;
@@ -146,7 +146,7 @@ if(config!=undefined){
   var settings = {
 	"async": true,
 	"crossDomain": true,
-	"url": "http://127.0.0.1:5000/analyze",
+	"url": "https://de26f53c.ngrok.io/analyze",
 	"method": "POST",
 	"headers": {
 	  "content-type": "application/json"
@@ -158,12 +158,19 @@ if(config!=undefined){
 	 var xhttp = new XMLHttpRequest();
  	 xhttp.onreadystatechange = function() {
     	if (this.readyState == 4 && this.status == 200) {
-	  		var filterData = [];
-	  	for (var key in this.responseText.resp) {
-			filterData.push(this.responseText.resp[key].sentence);
-		}
-      	var myHilitor = new Hilitor();
-		myHilitor.apply(filterData.join(' '));
+    		// console.log(this.responseText);
+  //   		this.responseText  = JSON.parse(this.responseText);
+	 //  		var filterData = [];
+	 // var data = this.responseText;
+	 // var data = data.join('\ ');
+	 	 //  		console.log(this.responseText.resp);
+	 	 //  	for (var key in this.responseText.resp) {
+	 		// 	filterData.push(this.responseText.resp[key].sentence);
+	 		// }
+	       	var myHilitor = new Hilitor();
+	       	// console).log(filterData);
+		// myHilitor.apply(filterData.join(' '));
+		myHilitor.apply(this.responseText);
 
     	}
   	};
