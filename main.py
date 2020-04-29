@@ -65,14 +65,19 @@ def home():
 def analyze_context():
     article = unquote(request.json.get('article', ""))
     testData = unquote(request.json.get('test_data', ""))
-    algo = request.json.get('algo', 'dcs')
+    algo = request.json.get('algo', 'wordnet')
 
     if not (article and testData):
         return jsonify("Error: missing values")
 
     #word2vec
     context = CheckSimilarity(article=article, testdata=testData, algo=algo).relatedContext
-    response = {"found":len(context)>0,"resp":context, "found":len(context)}
+    response = {
+                    "match":len(context)>0,
+                    "found":len(context),
+                    "yourSearch":testData,
+                    "resp":context
+    }
     return jsonify(response)
 
 
@@ -216,8 +221,11 @@ class CheckSimilarity(object):
                     sim = self.w2v(test_vector, vector)
                 else:
                     sim = self.getWordnetSimilarity(test_vector, vector)
-                if sim>0.8:
+                if sim>0.9:
                     related_context.append({"sentence":sentences[index+1], "similarityIndex":sim})
+            
+            if len(related_context)>2:
+                break
         return related_context
 
 
