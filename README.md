@@ -2,7 +2,7 @@
 ##### A chrome extension build with JavaScript and Python-Flask.
 
 ----------------------------
-![image](https://raw.githubusercontent.com/the-vishal/Context-Analyzer/master/UI.JPG)
+![image](assets/UI.JPG)
 
 ## Installation :wrench:
 1. Download the repository by clicking clone or Download button.
