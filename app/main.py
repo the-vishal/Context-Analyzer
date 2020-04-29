@@ -94,7 +94,7 @@ class CheckSimilarity(object):
         self.stopWords = [' '+i+' ' for i in self.stopWords] 
 
         if self.method =='w2v':
-            self.wordmodelfile="H:\softwares\Software Developing\GoogleNews-vectors-negative300-SLIM.bin.gz"                                         
+            self.wordmodelfile="../GoogleNews-vectors-negative300-SLIM.bin.gz"                                         
             self.wordmodel= gensim.models.KeyedVectors.load_word2vec_format(self.wordmodelfile, binary=True)
 
     @staticmethod
