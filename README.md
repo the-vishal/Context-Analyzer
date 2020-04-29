@@ -1,4 +1,4 @@
-# CONTEXT ANALYZER    ![image](icon.png) 
+# CONTEXT ANALYZER    ![image](app/icon.png) 
 ##### A chrome extension build with JavaScript and Python-Flask.
 
 ----------------------------
