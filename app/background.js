@@ -146,7 +146,7 @@ function Hilitor(tag)
   var settings = {
 	"async": true,
 	"crossDomain": true,
-	"url": "https://de26f53c.ngrok.io/analyze",
+	"url": "http://127.0.0.1:5000/analyze",
 	"method": "POST",
 	"headers": {
 	  "content-type": "application/json"
@@ -168,10 +168,16 @@ function Hilitor(tag)
 	 		// 	filterData.push(this.responseText.resp[key].sentence);
 	 		// }
 	       	var myHilitor = new Hilitor();
-	       	// console).log(filterData);
+	       	var obj = JSON.parse(this.responseText);
+		  	var sentences = []
+	       	// console.log(typeof(ojb));
+	       	// console.log(obj.resp);
 		// myHilitor.apply(filterData.join(' '));
-		myHilitor.apply(this.responseText);
-
+		obj.resp.forEach(function (item, index){
+			  sentences.push(item.sentence);
+			});
+		// console.log(sentences);
+		myHilitor.apply(sentences);
     	}
   	};
   	
