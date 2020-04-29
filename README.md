@@ -1,5 +1,5 @@
 # CONTEXT ANALYZER    ![image](app/icon.png) 
-##### A chrome extension build with JavaScript and Python-Flask.
+##### A NLP based Chrome extension build with JavaScript and Python-Flask.
 
 ----------------------------
 ![image](assets/UI.JPG)
@@ -26,4 +26,8 @@ As of Now it uses Flask API based backend (can be a centralised single server as
 
 
 ## Contributions :computer:
- Contributions as welcome :blush:.
+1. [Vishal](https://github.com/the-vishal)
+2. [Vikas Gupta](https://github.com/Vikas92155) 
+
+--------
+Contributions as Welcome :blush:.
