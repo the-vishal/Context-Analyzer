@@ -222,9 +222,9 @@ class CheckSimilarity(object):
                 else:
                     sim = self.getWordnetSimilarity(test_vector, vector)
                 if sim>0.9:
-                    related_context.append({"sentence":sentences[index+1], "similarityIndex":sim})
+                    related_context.append({"sentence":sentences[index+1].strip(), "similarityIndex":sim})
             
-            if len(related_context)>2:
+            if len(related_context)>5:
                 break
         return related_context
 
