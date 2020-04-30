@@ -1,87 +1,75 @@
 if(config!=undefined){
-function Hilitor(tag)
-	{
-		  // private variables
-		  var targetNode = document.body;
-		  var hiliteTag = tag || "MARK";
-		  var skipTags = new RegExp("^(?:" + hiliteTag + "|SCRIPT|FORM|SPAN)$");
-		  var colors = ["#ff6", "#a0ffff", "#9f9", "#f99", "#f6f"];
-		  var wordColor = [];
-		  var colorIdx = 0;
-		  var matchRegExp = "";
-		  var openLeft = false;
-		  var openRight = false;
+	function Hilitor(tag){
+		var targetNode = document.body;
+		var hiliteTag = "MARK";
+		var skipTags = new RegExp("^(?:" + hiliteTag + "|SCRIPT)$");
+		var colors = ["#ff6", "#a0ffff", "#9f9", "#f99", "#f6f"];
+		var wordColor = [];
+		var colorIdx = 0;
+		var matchRegExp = "";
+		var openLeft = false;
+		var openRight = false;
+		// characters to strip from start and end of the input string
+		var endRegExp = new RegExp('^[^\\w]+|[^\\w]+$', "g");
+		// characters used to break up the input string into words
+		// var breakRegExp = new RegExp('[^\\w\'-]+', "g");
+		var breakRegExp = endRegExp;
 
-		  // characters to strip from start and end of the input string
-		  var endRegExp = new RegExp('^[^\\w]+|[^\\w]+$', "g");
+		this.setEndRegExp = function(regex) {
+			endRegExp = regex;
+			return endRegExp;
+		};
 
-		  // characters used to break up the input string into words
-		  var breakRegExp = new RegExp('[^\\w\'-]+', "g");
-
-		  this.setEndRegExp = function(regex) {
-		    endRegExp = regex;
-		    return endRegExp;
-		  };
-
-		  this.setBreakRegExp = function(regex) {
+		this.setBreakRegExp = function(regex) {
 		    breakRegExp = regex;
 		    return breakRegExp;
-		  };
+		};
 
-		  this.setMatchType = function(type)
-		  {
-		    switch(type)
-		    {
+		this.setMatchType = function(type){
+		    switch(type){
 		      case "left":
 		        this.openLeft = false;
 		        this.openRight = true;
 		        break;
-
 		      case "right":
 		        this.openLeft = true;
 		        this.openRight = false;
 		        break;
-
 		      case "open":
 		        this.openLeft = this.openRight = true;
 		        break;
-
 		      default:
 		        this.openLeft = this.openRight = false;
-
 		    }
-		  };
+		};
 
-		  this.setRegex = function(input)
-		  {
+		this.setRegex = function(input){
 		    input = input.replace(endRegExp, "");
 		    input = input.replace(breakRegExp, "|");
 		    input = input.replace(/^\||\|$/g, "");
 		    if(input) {
-		      var re = "(" + input + ")";
-		      if(!this.openLeft) {
+		    	var re = "(" + input + ")";
+		    	if(!this.openLeft) {
 		        re = "\\b" + re;
-		      }
-		      if(!this.openRight) {
+		    }
+		    if(!this.openRight) {
 		        re = re + "\\b";
-		      }
-		      matchRegExp = new RegExp(re, "i");
-		      return matchRegExp;
+		    }
+		    matchRegExp = new RegExp(re, "i");
+		    return matchRegExp;
 		    }
 		    return false;
 		  };
 
-		  this.getRegex = function()
-		  {
+		this.getRegex = function(){
 		    var retval = matchRegExp.toString();
 		    retval = retval.replace(/(^\/(\\b)?|\(|\)|(\\b)?\/i$)/g, "");
 		    retval = retval.replace(/\|/g, " ");
 		    return retval;
-		  };
+		};
 
-		  // recursively apply word highlighting
-		  this.hiliteWords = function(node)
-		  {
+		// recursively apply word highlighting
+		this.hiliteWords = function(node){
 		    if(node === undefined || !node) return;
 		    if(!matchRegExp) return;
 		    if(skipTags.test(node.nodeName)) return;
@@ -106,34 +94,30 @@ function Hilitor(tag)
 		        node.parentNode.insertBefore(match, after);
 		      }
 		    };
-	  };
+	  	};
 
-	  // remove highlighting
-	  this.remove = function()
-	  {
-	    var arr = document.getElementsByTagName(hiliteTag);
-	    while(arr.length && (el = arr[0])) {
-	      var parent = el.parentNode;
-	      parent.replaceChild(el.firstChild, el);
-	      parent.normalize();
-	    }
-	  };
+	  	// remove highlighting
+	  	this.remove = function(){
+		    var arr = document.getElementsByTagName(hiliteTag);
+		    while(arr.length && (el = arr[0])) {
+		    	var parent = el.parentNode;
+		    	parent.replaceChild(el.firstChild, el);
+		    	parent.normalize();
+		    }
+		};
 
-	  // start highlighting at target node
-	  this.apply = function(input)
-	  {
-	    this.remove();
-	    if(input === undefined || !(input = input.replace(/(^\s+|\s+$)/g, ""))) {
-	      return;
-	    }
-	    if(this.setRegex(input)) {
-	      this.hiliteWords(targetNode);
-	    }
-	    return matchRegExp;
-	  };
-
+	  	// start highlighting at target node
+	  	this.apply = function(input){
+		    // this.remove();
+		    if(input === undefined || !(input = input.replace(/(^\s+|\s+$)/g, ""))) {
+		      return;
+		    }
+		    if(this.setRegex(input)) {
+		      this.hiliteWords(targetNode);
+		    }
+		    return matchRegExp;
+		};
 	}
-
 	// function unicodeToChar(text) {
 	// 	alert("Generating summary highlights. This may take up to 30 seconds depending on length of article.");
 	// 	return text.replace(/\\u[\dA-F]{4}/gi, 
@@ -141,9 +125,9 @@ function Hilitor(tag)
 	// 		return String.fromCharCode(parseInt(match.replace(/\\u/g, ''), 16));
 	//     });
 	// }
-  let TrainData = document.body.innerText;
-  let TargetData = config;
-  var settings = {
+	let TrainData = document.body.innerText;
+	let TargetData = config;
+	var settings = {
 	"async": true,
 	"crossDomain": true,
 	"url": "http://127.0.0.1:5000/analyze",
@@ -158,26 +142,17 @@ function Hilitor(tag)
 	 var xhttp = new XMLHttpRequest();
  	 xhttp.onreadystatechange = function() {
     	if (this.readyState == 4 && this.status == 200) {
-    		// console.log(this.responseText);
-  //   		this.responseText  = JSON.parse(this.responseText);
-	 //  		var filterData = [];
-	 // var data = this.responseText;
-	 // var data = data.join('\ ');
-	 	 //  		console.log(this.responseText.resp);
-	 	 //  	for (var key in this.responseText.resp) {
-	 		// 	filterData.push(this.responseText.resp[key].sentence);
-	 		// }
 	       	var myHilitor = new Hilitor();
+	       	myHilitor.remove();
 	       	var obj = JSON.parse(this.responseText);
-		  	var sentences = []
-	       	// console.log(typeof(ojb));
-	       	// console.log(obj.resp);
-		// myHilitor.apply(filterData.join(' '));
-		obj.resp.forEach(function (item, index){
-			  sentences.push(item.sentence);
-			});
-		// console.log(sentences);
-		myHilitor.apply(sentences);
+	       	if(obj.match==true){
+	       		var resp = obj.resp;
+				for (var key in resp){
+					myHilitor.apply(resp[key].sentence);
+				}
+			}else{
+				alert('Nothing found!!!. Try changing your target text');
+			}
     	}
   	};
   	
