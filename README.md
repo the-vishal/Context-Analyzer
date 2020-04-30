@@ -30,4 +30,4 @@ As of Now it uses Flask API based backend (can be a centralised single server as
 2. [Vikas Gupta](https://github.com/Vikas92155) 
 
 --------
-Contributions as Welcome :blush:.
+Contributions are Welcome :blush:.
