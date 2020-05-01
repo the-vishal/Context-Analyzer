@@ -22,6 +22,11 @@ As of Now it uses Flask API based backend (can be a centralised single server as
 
 
 ## How to USE :mag:
+After Setting you can use it like:
+
+![image](assets/demo.gif)
+
+In Google Word2Vec model these kind of possiblities are covered.
 ![image](assets/word2Vec_process.png)
 
 
