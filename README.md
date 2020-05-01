@@ -5,7 +5,7 @@
 
 ## Installation :wrench:
 1. Download the repository by clicking clone or Download button.
-2. In your Chrome browser:```More Tools > Extensions > Load Unpacked > Select the Downloaded Folder.```
+2. In your Chrome browser:```More Tools > Extensions > Load Unpacked > Downloaded Folder >>  Select the app Folder.```
 3. Viola!! you are good to go.
 
 ## Setting Up :electric_plug:
