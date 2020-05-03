@@ -38,26 +38,30 @@ from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import CountVectorizer
 from nltk.stem.wordnet import WordNetLemmatizer
 from nltk.tokenize import sent_tokenize, word_tokenize
+
+#approach3 - using WordNet
 from nltk.corpus import stopwords,wordnet
 from itertools import product
 import numpy
 
-
 #approach2 - using word2Vec
 from gensim.models import word2vec
 import gensim
+
+
+
+
+
 
 #FLASK CONFIG
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
 cors = CORS(app)
 
-
-
 #HOME
 @app.route('/', methods=['GET'])
 def home():
-    return "<h1><u>NLP based Context Analyzer</u></h1><p>This is a NLP based Context Analyzing tool. <br /> Developer(s) never take responsibility of any cases or results missed. <br /> It is just a tool proposed for helping searcher out there.</p>"
+    return "<h1><u>NLP based Context Analyzer</u></h1><p>This is a NLP based Context Analyzing tool. <br /> Developer(s) never take responsibility of any cases or results missed. <br /> It is just a tool proposed for helping searchers out there.</p>"
 
 
 #ANALYZE POST REQ API
@@ -224,6 +228,7 @@ class CheckSimilarity(object):
                 if sim>0.9:
                     related_context.append({"sentence":sentences[index+1].strip(), "similarityIndex":sim})
             
+            # taking first 5 matches (to get all relavant matches uncomment this case), it would be slower.
             if len(related_context)>5:
                 break
         return related_context
