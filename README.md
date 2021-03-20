@@ -32,7 +32,7 @@ In Google Word2Vec model these kind of possiblities are covered.
 
 ## Contributions :computer:
 1. [Vishal](https://github.com/the-vishal)
-2. [Vikas Gupta](https://github.com/Vikas92155) 
+2. [Vikas Gupta](https://github.com/iamxhunt3r) 
 
 --------
 Contributions are Welcome :blush:.
